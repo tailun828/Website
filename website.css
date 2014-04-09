@@ -10,15 +10,15 @@
 
 #navbar
 	{
-		font-size:30px;
+		font-size:25px;
 		font-family:Arial;
-		margin-left:850px;
-		margin-top:10px;
+		margin-left:800px;
+		margin-top:15px;
 		width:1000px;
 		height:40px;
 		/*border:1px dashed black*/;
-		position:fixed;
-		padding:5px;
+		position:absolute;
+		padding:3px;
 	}
 
 #navbutton
@@ -28,8 +28,12 @@
 		padding:30px;
 		text-decoration:none;
 	}
-	
 
+ a
+	{
+		text-decoration: none;
+		color:#ccd6eb
+	}
 #header
 	{
 		width: 35000px;
@@ -39,5 +43,5 @@
 		margin:auto;
 		margin-left:-90px;
 		margin-top: -15px;
-		position:absolute;
+		float:left;
 	}
