@@ -14,7 +14,7 @@ var calculate = function(input) {
 		};
 
 	var listofOperations = ['squarerootof','mutliply' ,'times','add', 'and','plus','divideover','minus','subtract','sineof','tangentof','cosineof','exp']; /*fix minussubtract wrong match*/
-	var operation = [ 'Math.sqrt', '*','*', '+','+','+', '/', '-','-', 'Math.sin', 'Math.tan', 'Math.cos','Math.pow'];
+	var operation = [ 'Math.sqrt', '*','*', '+','+','+', '/', '-','-', 'Math.sin', 'Math.tan', 'Math.cos','Math.exp'];
 	var scoreArray = [];
 	for (var i = 0; i<shortLetterArray.length; i++) {    /*loop through all the unrefined operators*/
 		var unrefineOperatorString = shortLetterArray[i];
