@@ -9,7 +9,19 @@
 </form>
 
 <script>
-document.write(1+1)
+
+input = 'sqrt of 5'
+var numArray = input.split(/\D/gi);
+document.write (typeof(numArray[1]))
+for (var i =0; i<numArray.length; i++) {
+		if (numArray[i] !== '') {
+			numArray[i] = '(' + numArray[i] + ')';
+			document.write(i);
+	};
+};
+
+document.write(numArray);
+
 </script>
 
 

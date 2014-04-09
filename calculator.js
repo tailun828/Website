@@ -5,10 +5,13 @@ var calculate = function(input) {
 	var numArray = input.split(/\D/gi);
 	var letterArray = input.split(/[^a-z]/gi);
 	var shortLetterArray = letterArray.filter(function(e){return e});
-	var numOpenPara = 0;
-	var numClosePara = 0;
-	var positionOpen = [];
-	var positionClose = [];
+
+	for (var i =0; i<numArray.length; i++) {
+			if (numArray[i] !== '' ) {
+				numArrayPara = '(' + numArray[i] + ')';            /*Add paranthesis around the naked number*/
+				input = input.replace(numArray[i],numArrayPara);                  /*replaced naked number with clothed number*/
+			};
+		};
 
 	var listofOperations = ['squarerootof','mutliply' ,'times','add', 'and','plus','divideover','minus','subtract','sineof','tangentof','cosineof','exp']; /*fix minussubtract wrong match*/
 	var operation = [ 'Math.sqrt', '*','*', '+','+','+', '/', '-','-', 'Math.sin', 'Math.tan', 'Math.cos','Math.pow'];
