@@ -2,6 +2,8 @@
 
 <html>
 <head>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}});</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
 <link rel="stylesheet" type="text/css" href="calculator.css">
 <script src="calculator.js"></script>
 <title>Website for Tailun Ng</title>
@@ -9,16 +11,6 @@
 
 
 <body>
-<script>
-	    function evaluateInput() {
-	    	var x = document.getElementById("input").value;
-	    	var returnAns = calculate(x);
-	    	var niceOut = "$$x={" + returnAns[0] + "}.$$";
-	    	document.getElementById("outputNice").innerHTML = niceOut;
-	    	document.getElementById("userOutput").innerHTML = returnAns[1];
-	    };
-</script>
-
 
 
 	<div id="header">
@@ -61,22 +53,58 @@
 	    		<p style = "font-size:20px; font-family:Arial">Step1: <input type="text" id = "input" name="userInput"></p>
 	    	<div>
 	    	<div class="equal">
-	  		    <button onclick="evaluateInput() ">=</button>
+	  		    <button id = "MathInput" onclick="evaluateInput();UpdateMath(this.value)"value = ''>=</button>
 	  		</div>	
 
-	  		<div>
-				<div id = "outputNice">
-					<script src ="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-				</div>
-			</div>
-			
-
-	   	    <div>
-	   			<p id="userOutput"></p>
-	   		</div>
+			<p id="MathOutput"> ${  }$
+	   		<p id="userOutput"></p>
 		    
 
 	</div>
+
+
+
+<script>
+	    function evaluateInput() {
+	    	var x = document.getElementById("input").value;
+	    	var returnAns = calculate(x);
+	    	var niceOut = returnAns[0].replace(/[(]/g,'{');
+	    	var niceOut = niceOut.replace(/[)]/g,'}');
+	    	var niceOut = "{" + niceOut + "}";
+	    	document.getElementById("userOutput").innerHTML = returnAns[1];
+	    	document.getElementById("MathInput").value = niceOut;
+	    };
+</script>
+
+<!--......................................................................................................-->
+
+<script>
+  //
+  //  Use a closure to hide the local variables from the
+  //  global namespace
+  //
+  (function () {
+    var QUEUE = MathJax.Hub.queue;  // shorthand for the queue
+    var math = null;                // the element jax for the math output.
+
+    //
+    //  Get the element jax when MathJax has produced it.
+    //
+    QUEUE.Push(function () {
+      math = MathJax.Hub.getAllJax("MathOutput")[0];
+    });
+
+    //
+    //  The onchange event handler that typesets the
+    //  math entered by the user
+    //
+    window.UpdateMath = function (TeX) {
+      QUEUE.Push(["Text",math,"\\displaystyle{"+TeX+"}"]);
+    }
+  })();
+
+</script>
+
 
 </body>
 
