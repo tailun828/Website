@@ -3,12 +3,11 @@
 <head>
 <title>||Working with elements||</title>
 </head>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 
 <body>
-<div id='org_div1'> The text above has been created dynamically.</div>
+<div id='calculator'> The text above has been created dynamically.</div>
 </body>
 <button onclick = "addElement()">=</button>
 <script>
@@ -19,10 +18,10 @@ function addElement () {
   // create a new div element 
   // and give it some content 
   var newDiv = document.createElement("div"); 
-  var newContent = document.createTextNode("$$x = {1+3}.$$"); 
+  var newContent = document.createTextNode('hi'); 
   newDiv.appendChild(newContent); //add the text node to the newly created div. 
   // add the newly created element and its content into the DOM 
-  my_div = document.getElementById("org_div1"); 
+  my_div = document.getElementById("calculator"); 
   document.body.insertBefore(newDiv,my_div); 
 } 
 </script>

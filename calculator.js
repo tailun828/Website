@@ -44,3 +44,18 @@ var calculate = function(input) {
 	var ansArray = [input,eval(input)];
 	return (ansArray);	
 };
+
+var niceOutput = function(inputString) {
+	var inputString = inputString;
+	var letterArray = inputString.split(/[^a-z.]/gi);
+	var operation = [ 'Math.sqrt', '*','*', '+','+','+', '/', '-','-', 'Math.sin', 'Math.tan', 'Math.cos','Math.exp', 'Math.exp'];
+	var operationLatex = [ "\\sqrt", '*','*', '+','+','+', '\\over', '-','-', '\\sin', '\\tan', '\\cos','\\exp', '\\exp'];
+	for (var i = 0; i < letterArray.length; i++) {
+		for (var j = 0; j < operation.length; j++) {
+		if (letterArray[i] === operation [j]) {
+			inputString = inputString.replace(letterArray[i], operationLatex[j])
+		}
+	}
+}
+return inputString
+};

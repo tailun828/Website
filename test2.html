@@ -1,25 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>MathJax TeX Test Page</title>
-</head>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" id = 'd'>
+
+<script>
+var niceOutput = function(inputString) {
+	var letterArray = inputString.split(/[^a-z.]/gi);
+	var operation = [ 'Math.sqrt', '*','*', '+','+','+', '/', '-','-', 'Math.sin', 'Math.tan', 'Math.cos','Math.exp', 'Math.exp'];
+	var operationLatex = [ "\\sqrt", '*','*', '+','+','+', '\\over', '-','-', '\\sin', '\\tan', '\\cos','\\exp', '\\exp'];
+	document.write (letterArray);
+	for (var i = 0; i < letterArray.length; i++) {
+		for (var j = 0; j < operation.length; j++) {
+		if (letterArray[i] === operation [j]) {
+			letterArray[i] = operationLatex[j]
+		}
+	}
+}
+return letterArray
+};
+
+document.write(niceOutput('1+Math.sqrt8'))
+
 </script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [["$","$"],["\\(","\\)"]]
-    }
-  });
-</script>
-
-<button onclick = "document.getElementById('a').innerHTML = '\\displaystyle{1+1}';";>=</button> 
-
-<p id = 'a'>$$x = {1+1}.$$</p>
-<body>
-
-
-</body>
-</html>
-
-

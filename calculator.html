@@ -58,7 +58,7 @@
 
 			<p id="MathOutput"> ${  }$
 	   		<p id="userOutput"></p>
-		    
+
 
 	</div>
 
@@ -71,9 +71,11 @@
 	    	var niceOut = returnAns[0].replace(/[(]/g,'{');
 	    	var niceOut = niceOut.replace(/[)]/g,'}');
 	    	var niceOut = "{" + niceOut + "}";
+	    	var finalNice = niceOutput(niceOut);
 	    	document.getElementById("userOutput").innerHTML = returnAns[1];
-	    	document.getElementById("MathInput").value = niceOut;
+	    	document.getElementById("MathInput").value = finalNice;
 	    };
+
 </script>
 
 <!--......................................................................................................-->
@@ -110,4 +112,3 @@
 
 <!--<p style = "font-size:50px">&radic;<span style="border-top: 1px solid #000000; font-size: 50px;">7563443</span></p>-->
 </html>
-
