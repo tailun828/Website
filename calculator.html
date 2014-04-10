@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 
 <html>
+<head>
 <link rel="stylesheet" type="text/css" href="calculator.css">
 <script src="calculator.js"></script>
-<head>
-	<title>Website for Tailun Ng</title>
+<title>Website for Tailun Ng</title>
 </head>
+
+
 <body>
+<script>
+	    function evaluateInput() {
+	    	var x = document.getElementById("input").value;
+	    	var returnAns = calculate(x);
+	    	var niceOut = "$$x={" + returnAns[0] + "}.$$";
+	    	document.getElementById("outputNice").innerHTML = niceOut;
+	    	document.getElementById("userOutput").innerHTML = returnAns[1];
+	    };
+</script>
+
+
 
 	<div id="header">
 		<p id="name">Tailun Ng</p>
@@ -48,40 +61,22 @@
 	    		<p style = "font-size:20px; font-family:Arial">Step1: <input type="text" id = "input" name="userInput"></p>
 	    	<div>
 	    	<div class="equal">
-	  		    <button onclick="evaluateInput();lookNice()">=</button>
+	  		    <button onclick="evaluateInput() ">=</button>
 	  		</div>	
 
 	  		<div>
-				<p id = "outputNice"></p>
-			<div>
+				<div id = "outputNice">
+					<script src ="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+				</div>
+			</div>
+			
 
 	   	    <div>
 	   			<p id="userOutput"></p>
-		    </div>
+	   		</div>
+		    
 
 	</div>
-	
-<!--Function-->
-
-	<script>
-
-		function lookNice() {
-			var intermediate = document.getElementById("input").value;
-			var returnNice = calculate(intermediate);
-			document.getElementById("outputNice").innerHTML = returnNice[0];
-
-		};
-
-	    function evaluateInput() {
-	    	var x = document.getElementById("input").value;
-	    	var returnAns = calculate(x);
-	    	document.getElementById("userOutput").innerHTML = returnAns[1];
-	    };
-
-	</script>
-
-
-
 
 </body>
 

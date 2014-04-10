@@ -9,18 +9,29 @@
 </form>
 
 <script>
+var input = '1 +((4)+(5))^(6)';
+if(input.indexOf('^') !== -1)
+{
+  var baseArray = [];
+  var counterClose = 0;
+  var counterOpen = 0;
+  var firstpos = 0;
 
-input = 'sqrt of 5'
-var numArray = input.split(/\D/gi);
-document.write (typeof(numArray[1]))
-for (var i =0; i<numArray.length; i++) {
-		if (numArray[i] !== '') {
-			numArray[i] = '(' + numArray[i] + ')';
-			document.write(i);
-	};
-};
+  for (var i = input.indexOf('^'); i>=0; i--) {
+  	if (input[i] === ')') {
+  		counterClose = counterClose +1;
+      
+  	}
+  	else if (input[i] === '(') {
+  		counterClose = counterClose-1;
+      if (counterClose === 0) {
+        firstpos = i;
+      };	
+  	};
+  };
+ };
 
-document.write(numArray);
+  document.write(firstpos);
 
 </script>
 

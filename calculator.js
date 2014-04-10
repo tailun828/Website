@@ -6,15 +6,20 @@ var calculate = function(input) {
 	var letterArray = input.split(/[^a-z]/gi);
 	var shortLetterArray = letterArray.filter(function(e){return e});
 
+	/*special case with exponential function*/
+
+    /*adding paranthesis to each number to solve "sqrt of 6"*/
 	for (var i =0; i<numArray.length; i++) {
 			if (numArray[i] !== '' ) {
-				numArrayPara = '(' + numArray[i] + ')';            /*Add paranthesis around the naked number*/
+				numArrayPara = '(' + numArray[i] + ')';            /*add paranthesis around the naked number*/
 				input = input.replace(numArray[i],numArrayPara);                  /*replaced naked number with clothed number*/
 			};
 		};
 
-	var listofOperations = ['squarerootof','mutliply' ,'times','add', 'and','plus','divideover','minus','subtract','sineof','tangentof','cosineof','exp']; /*fix minussubtract wrong match*/
-	var operation = [ 'Math.sqrt', '*','*', '+','+','+', '/', '-','-', 'Math.sin', 'Math.tan', 'Math.cos','Math.exp'];
+    /* Match and replace operator */
+	var listofOperations = ['squarerootof','mutliply' ,'times','add', 'and','plus','divideover','minus','subtract','sineof','tangentof','cosineof','exp', 'e^']; /*fix minussubtract wrong match*/
+	var operation = [ 'Math.sqrt', '*','*', '+','+','+', '/', '-','-', 'Math.sin', 'Math.tan', 'Math.cos','Math.exp', 'Math.exp'];
+	var operationLatex = [ "\\sqrt", '*','*', '+','+','+', '/', '-','-', '\\sin', '\\tan', '\\cos','\\exp', '\\exp'];
 	var scoreArray = [];
 	for (var i = 0; i<shortLetterArray.length; i++) {    /*loop through all the unrefined operators*/
 		var unrefineOperatorString = shortLetterArray[i];
@@ -27,14 +32,15 @@ var calculate = function(input) {
 				if (refineOperatorString2.length === refineOperatorString.length) {
 				}
 				else {
-					var score = score+1;             /*If there is a change in length, we know the letter matched, so it is closer to the key!*/
+					var score = score + 1;             /*If there is a change in length, we know the letter matched, so it is closer to the key!*/
 				}
 			}
 		scoreArray[j] = score;
 		}
-	var maxIndex = scoreArray.indexOf(Math.max.apply(Math, scoreArray));  /*Find which operator fits best!!*/  
-	input = input.replace(shortLetterArray[i], operation[maxIndex]);         /*replace unrefine with refine operator in input string*/  
-	};
+		var maxIndex = scoreArray.indexOf(Math.max.apply(Math, scoreArray));  /*Find which operator fits best!!*/  
+		input = input.replace(shortLetterArray[i], operation[maxIndex]);         /*replace unrefine with refine operator in input string*/ 
+		};
+
 	var ansArray = [input,eval(input)];
-	return (ansArray);
+	return (ansArray);	
 };

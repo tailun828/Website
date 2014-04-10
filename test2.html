@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MathJax TeX Test Page</title>
+
+</head>
+
+ <button onclick = "evaluateInput();">=</button>
+
+
+<script>
+var evaluateInput = function(){
+var y = "$$x={((1))+1}.$$";
+document.getElementById("a").innerHTML = y;
+};
+
+</script>
+
+
+
+
+<p id="a">3</p>
+<p id = "b">2</p>
+
+<script type = "text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+var e = document.getElementById("a").innerHTML;
+document.getElementById("b").innerHTML = e;
+};
+</script>
+
+<body>
+
+
+
+</body>
+</html>
+
+
