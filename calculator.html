@@ -11,8 +11,6 @@
 
 
 <body>
-
-
 	<div id="header">
 		<p id="name">Tailun Ng</p>
 	</div>
@@ -27,7 +25,6 @@
 			<a href="travel.html">Travel</a>
 		</div>
 		<div id="navbutton">Tools</div>
-
 	</div>
 
 	<!--sidebar-->
@@ -43,7 +40,6 @@
 		</div>
 	</div>
 
-
 <!--..........................................................................................................-->
 
 <!--Calculator Styling-->
@@ -58,11 +54,7 @@
 
 			<p id="MathOutput"> ${  }$
 	   		<p id="userOutput"></p>
-
-
 	</div>
-
-
 
 <script>
 	    function evaluateInput() {
@@ -75,40 +67,24 @@
 	    	document.getElementById("userOutput").innerHTML = returnAns[1];
 	    	document.getElementById("MathInput").value = finalNice;
 	    };
-
 </script>
 
 <!--......................................................................................................-->
 
 <script>
-  //
-  //  Use a closure to hide the local variables from the
-  //  global namespace
-  //
   (function () {
     var QUEUE = MathJax.Hub.queue;  // shorthand for the queue
     var math = null;                // the element jax for the math output.
 
-    //
-    //  Get the element jax when MathJax has produced it.
-    //
     QUEUE.Push(function () {
       math = MathJax.Hub.getAllJax("MathOutput")[0];
     });
 
-    //
-    //  The onchange event handler that typesets the
-    //  math entered by the user
-    //
     window.UpdateMath = function (TeX) {
       QUEUE.Push(["Text",math,"\\displaystyle{"+TeX+"}"]);
     }
   })();
 
 </script>
-
-
 </body>
-
-<!--<p style = "font-size:50px">&radic;<span style="border-top: 1px solid #000000; font-size: 50px;">7563443</span></p>-->
 </html>

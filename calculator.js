@@ -2,7 +2,7 @@ var calculate = function(input) {
 
 	var input = input
 	input = input.replace(/\s/g, '');       /*get rid of all spacing "s*/
-	var numArray = input.split(/\D/gi);
+	var numArray = input.split(/\D\./gi);
 	var letterArray = input.split(/[^a-z]/gi);
 	var shortLetterArray = letterArray.filter(function(e){return e});
 
@@ -19,7 +19,6 @@ var calculate = function(input) {
     /* Match and replace operator */
 	var listofOperations = ['squarerootof','mutliply' ,'times','add', 'and','plus','divideover','minus','subtract','sineof','tangentof','cosineof','exp', 'e^']; /*fix minussubtract wrong match*/
 	var operation = [ 'Math.sqrt', '*','*', '+','+','+', '/', '-','-', 'Math.sin', 'Math.tan', 'Math.cos','Math.exp', 'Math.exp'];
-	var operationLatex = [ "\\sqrt", '*','*', '+','+','+', '\\over', '-','-', '\\sin', '\\tan', '\\cos','\\exp', '\\exp'];
 	var scoreArray = [];
 	for (var i = 0; i<shortLetterArray.length; i++) {    /*loop through all the unrefined operators*/
 		var unrefineOperatorString = shortLetterArray[i];
@@ -45,17 +44,18 @@ var calculate = function(input) {
 	return (ansArray);	
 };
 
+/*Takes in a string with javascript math notation and changes it to Tex*/
 var niceOutput = function(inputString) {
 	var inputString = inputString;
 	var letterArray = inputString.split(/[^a-z.]/gi);
 	var operation = [ 'Math.sqrt', '*','*', '+','+','+', '/', '-','-', 'Math.sin', 'Math.tan', 'Math.cos','Math.exp', 'Math.exp'];
-	var operationLatex = [ "\\sqrt", '*','*', '+','+','+', '\\over', '-','-', '\\sin', '\\tan', '\\cos','\\exp', '\\exp'];
+	var operationLatex = [ "\\sqrt", '','', '+','+','+', '\\over', '-','-', '\\sin', '\\tan', '\\cos','\\exp', '\\exp'];
 	for (var i = 0; i < letterArray.length; i++) {
 		for (var j = 0; j < operation.length; j++) {
-		if (letterArray[i] === operation [j]) {
+			if (letterArray[i] === operation [j]) {
 			inputString = inputString.replace(letterArray[i], operationLatex[j])
+			}
 		}
 	}
-}
-return inputString
+	return inputString
 };
