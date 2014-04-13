@@ -1,23 +1,45 @@
 <html>
 <link rel="stylesheet" type="text/css" href="tools.css">
+<script src = "chemToolParser.js"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript">
+    if (typeof jQuery == 'undefined') {
+        document.write(unescape("%3Cscript src='JS/Plugins/jquery-1.8.2.min.js' type='text/javascript'%3E%3C/script%3E"));
+    }
+</script>
 
 <!--.........................................................................................................................................-->
 
 
 <!--.........................................................................................................................................-->
-<canvas id="myCanvas" width="500" height="500" style="border:1px solid #d3d3d3;">
+<canvas id="myCanvas" width="400" height="400" style="border:1px solid #d3d3d3;">
 Your browser does not support the HTML5 canvas tag.</canvas>
 
 <script>
+var data = dataRetrieve("C=C");
+var output = smilesParser(data);
+var numBond = output[2];
+var bondPath = output[4];
+var molObject = output[3];
+var numAtom = output[1];
+
 var c=document.getElementById("myCanvas");
 var ctx=c.getContext("2d");
-for (i=0;i<10;i++){
-       ctx.lineWidth = 2;
+ctx.scale(40,40)
+ctx.translate(0.5,4)
+for (i=0;i<numBond-1;i++){
+       ctx.lineWidth = 0.05;
        ctx.beginPath();
-       ctx.moveTo(5+i*14,5);
-       ctx.lineTo(5+i*14,140);
+
+       ctx.moveTo(bondPath[i].originCoordinate[0], bondPath[i].originCoordinate[1]);
+       ctx.lineTo(bondPath[i].endCoordinate[0], bondPath[i].endCoordinate[1]);
        ctx.stroke();
     }
+
+for (i = 0; i < numAtom; i++) {
+ 	ctx.fillRect(molObject[i].xCoordinate, molObject[i].yCoordinate,.2,.2);
+ };
+
 
 </script>
 

@@ -1,13 +1,3 @@
-<html>
-
-<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script type="text/javascript">
-    if (typeof jQuery == 'undefined') {
-        document.write(unescape("%3Cscript src='JS/Plugins/jquery-1.8.2.min.js' type='text/javascript'%3E%3C/script%3E"));
-    }
-</script>
-
-<script>
 
 var dataRetrieve = function(smilesString) {
     $.ajax({ 
@@ -54,7 +44,7 @@ var smilesParser = function(data) {
 
 
         for (var i = 0; i < numAtom ; i++) {
-            molObject[i] = new newElement(i, data[16 + counter] ,data[17 + counter], data[19 + counter], data[22 + counter])
+            molObject[i] = new newElement(i, (data[16 + counter]) , data[17 + counter], Number(data[19 + counter]), Number(data[22 + counter]));
             counter = counter + 16;
         };
 
@@ -71,14 +61,3 @@ var smilesParser = function(data) {
 
     return smilesParserOutput = [chemFormula,numAtom,numBond,molObject,bondPath];
 };
-
-var data = dataRetrieve("CN1CCC[C@H]1c2cccnc2");
-var output = smilesParser(data);
-var molObject = output[3];
-var bondPath = output[4];
-document.write(typeof(bondPath[14].originCoordinate[0]), typeof(bondPath[14].originCoordinate[1]));
-
-
-</script>
-</html>
-

@@ -1,0 +1,11 @@
+<html>
+<script>
+
+var req = new XMLHttpRequest();  
+req.open('GET', 'http://www.ngtailun.com/', false);   
+req.send(null);  
+if(req.status == 200)  
+   dump(req.responseText);
+
+</script>
+
