@@ -16,7 +16,7 @@
 Your browser does not support the HTML5 canvas tag.</canvas>
 
 <script>
-var data = dataRetrieve("C=C");
+var data = dataRetrieve("OCCc1c(C)[n+](=cs1)Cc2cnc(C)nc(N)2");
 var output = smilesParser(data);
 var numBond = output[2];
 var bondPath = output[4];
@@ -27,20 +27,13 @@ var c=document.getElementById("myCanvas");
 var ctx=c.getContext("2d");
 ctx.scale(40,40)
 ctx.translate(0.5,4)
-for (i=0;i<numBond-1;i++){
+for (i=1;i<numBond +1;i++){
        ctx.lineWidth = 0.05;
        ctx.beginPath();
-
        ctx.moveTo(bondPath[i].originCoordinate[0], bondPath[i].originCoordinate[1]);
        ctx.lineTo(bondPath[i].endCoordinate[0], bondPath[i].endCoordinate[1]);
        ctx.stroke();
     }
-
-for (i = 0; i < numAtom; i++) {
- 	ctx.fillRect(molObject[i].xCoordinate, molObject[i].yCoordinate,.2,.2);
- };
-
-
 </script>
 
 </body>

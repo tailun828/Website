@@ -72,7 +72,7 @@ var smilesParser = function(data) {
     return smilesParserOutput = [chemFormula,numAtom,numBond,molObject,bondPath];
 };
 
-var data = dataRetrieve("CN1CCC[C@H]1c2cccnc2");
+var data = dataRetrieve("OCCc1c(C)[n+](=cs1)Cc2cnc(C)nc(N)2");
 var output = smilesParser(data);
 var molObject = output[3];
 var bondPath = output[4];
