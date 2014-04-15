@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <link rel="stylesheet" type="text/css" href="tools.css">
 <script src = "chemToolParser.js"></script>
@@ -8,16 +9,65 @@
     }
 </script>
 
-<!--.........................................................................................................................................-->
+<!--.................................................................................................................................-->
+<title>Website for Tailun Ng</title>
+</head>
+<body>
+	<div id="header">
+		<p id="name">Tailun Ng</p>
+	</div>
 
+	<!--navbar-->
+	<div id="navbar">
+		<div id="navbutton">
+			<a href="home.html">Home</a>
+		</div>
+		<div id="navbutton">Work</div>
+		<div id="navbutton">
+			<a href="travel.html">Travel</a>
+		</div>
+		<div id="navbutton">Tools</div>
+	</div>
+
+	<!--sidebar-->
+	<div id = "sidebar">
+		<div id = "toolButton">
+			<a href = "calculator.html">Calculator</a>
+		</div>
+		<div id = "toolButton">
+			<a href = "error.html">Error Propagation</a>
+		</div>
+		<div id = "toolButton">
+			<a href = "chemtool.html">ChemTool</a>
+		</div>
+	</div>
 
 <!--.........................................................................................................................................-->
-<canvas id="myCanvas" width="400" height="400" style="border:1px solid #d3d3d3;">
+	<div id="chemtool">
+	  	<!--input-->
+	  		<div class="input">
+	    		<p style = "font-size:20px; font-family:Arial">Step1: <input type="text" id = "input" name="userInput"></p>
+	    	<div>
+	    	<div class="equal">
+	  		    <button id = "chemNameInput" onclick="getStructure()">=</button>
+	  		</div>	
+	    	<div id = "chemOutput">
+	    		<canvas id="myCanvas" width="700" height="400" style="border:1px solid #d3d3d3;">
 Your browser does not support the HTML5 canvas tag.</canvas>
+			</div>
+			
+
+	</div>
+
+<!--.........................................................................................................................................-->
+
+
 
 <script>
-var data = dataRetrieve("OCCc1c(C)[n+](=cs1)Cc2cnc(C)nc(N)2");
-var output = smilesParser(data);
+var getStructure = function () {
+var chemNameInput = document.getElementById("input").value
+var data = dataRetrieve(chemNameInput);    //returns sdf
+var output = chemResolverParser(data);    //parse sdf
 var numBond = output[2];
 var bondPath = output[4];
 var molObject = output[3];
@@ -34,12 +84,11 @@ for (i=1;i<numBond +1;i++){
        ctx.lineTo(bondPath[i].endCoordinate[0], bondPath[i].endCoordinate[1]);
        ctx.stroke();
     }
+}; 
 </script>
 
 </body>
-</html>
 
-</script>
 
 </body>
 </html>

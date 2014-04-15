@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Web API Example</title>
+</head>
+<body>
+    <h3>Web API Example</h3>
+    <p>For more information about the ChemSpider Web API and the commented code behind this form see <a href="./WebAPI.aspx">WebAPI.aspx page</a></p>
+    <form action="http://www.chemspider.com/WebAPI.aspx">
+        <!-- depending on this selector one of the following groups of options is taken into account -->
+        <label for="mode">Mode: </label>
+        <select name="mode" style='width:210px;'>
+            <option value="search">Search Service</option>
+            <option value="predict">Predictions Service</option>
+        </select>
+        <br/>
+        
+        <!----------------------------------------------------------------------------->
+        <!-- search mode -->
+        <!----------------------------------------------------------------------------->
+        <!-- this is MOL or SDF file to be processed -->
+        <input type="hidden" name="molfile" />
+        <!-- this is one of two modes for structure matching -->
+        <!-- IMPORTANT: due to the bug in an early version "structure" value will actually do substructure search and vice versa -->
+        <label for="search_type">Search type: </label>
+        <select name="search_type" style='width:210px;'>
+            <option value="structure">Search Exact Structure</option>
+            <option value="substructure">Search Substructure</option>
+        </select>
+        <br/>
+        <!-- these options are valid for both exact and substructure search -->
+        <label for="match_stereo">Match Stereo: </label>
+        <input type="checkbox" name="match_stereo" value="Match Stereo" />
+        <br/>
+        <label for="match_isotope">Match Isotopes: </label>
+        <input type="checkbox" name="match_isotope" value="Match Isotopes" />
+        <br/>
+        <label for="match_charge">Match Charges: </label>
+        <input type="checkbox" name="match_charge" value="Match Charges" />
+        <br/>
+        <!-- this option is valid for substructure search only -->
+        <label for="match_ring">Match Rings With Chains: </label>
+        <input type="checkbox" name="match_ring" value="Match Rings With Chains" />
+        <br/>
+        
+        <!-- Name to search by -->
+        <label for="chemname">Chemical Name: </label>
+        <input type="text" name="chemname" />
+        <br/>
+        <!-- if selected name must be matched literally -->
+        <label for="match_exact_name">Match Rings With Chains:</label>
+        <input type="checkbox" name="match_exact_name" />
+        <br/>
+        
+        <!-- Molecular formula query -->
+        <label for="match_exact_name">Molecular formula:</label>
+        <input type="text" name="MF" />
+        <br/>
+        <!-- Molecular weight minimum and maximum -->
+        <label for="MW_min">Molecular weight min. and max.:</label>
+        <input type="text" name="MW_min" />
+        <input type="text" name="MW_max" />
+        <br/>
+        <!-- Nominal mass minimum and maximum -->
+        <label for="NM_min">Nominal mass min. and max.:</label>
+        <input type="text" name="NM_min" />
+        <input type="text" name="NM_max" />
+        <br/>
+        <!-- Average mass minimum and maximum -->
+        <label for="AM_min">Average mass min. and max.:</label>
+        <input type="text" name="AM_min" />
+        <input type="text" name="AM_max" />
+        <br/>
+        <!-- Monoisotopic mass minimum and maximum -->
+        <label for="MM_min">Monoisotopic mass min. and max.:</label>
+        <input type="text" name="MM_min" />
+        <input type="text" name="MM_max" />
+        <br/>
+        <!-- LogP -->
+        <label for="LogP_min">LogP min. and max.:</label>
+        <input type="text" name="LogP_min" />
+        <input type="text" name="LogP_max" />
+        <br/>
+        <!-- LogD at 5.5 -->
+        <label for="LogD_1_min">LogD_1 min. and max.:</label>
+        <input type="text" name="LogD_1_min" />
+        <input type="text" name="LogD_1_max" />
+        <br/>
+        <!-- LogD at 7.4 -->
+        <label for="LogD_2_min">LogD_2 min. and max.:</label>
+        <input type="text" name="LogD_2_min" />
+        <input type="text" name="LogD_2_max" />
+        <br/>
+        <!-- Rule of 5 alert -->
+        <label for="RuleOf5_min">Rule Of 5 alert min. and max.:</label>
+        <input type="text" name="RuleOf5_min" />
+        <input type="text" name="RuleOf5_max" />
+        <br/>
+        <!-- # of H acceptors -->
+        <label for="HAcceptors_min">No. of hydrogen acceptors min. and max.:</label>
+        <input type="text" name="HAcceptors_min" />
+        <input type="text" name="HAcceptors_max" />
+        <br/>
+        <!-- # of H donors -->
+        <label for="HDonors_min">No. of hydrogen donors min. and max.:</label>
+        <input type="text" name="HDonors_min" />
+        <input type="text" name="HDonors_max" />
+        <br/>
+        <!-- Freely Rotatable Bonds -->
+        <label for="FRB_min">No. of freely rotatable bonds min. and max.:</label>
+        <input type="text" name="FRB_min" />
+        <input type="text" name="FRB_max" />
+        <br/>
+        <!-- Polar Surface Area -->
+        <label for="PSA_min">Polar surface area min. and max.:</label>
+        <input type="text" name="PSA_min" />
+        <input type="text" name="PSA_max" />
+        <br/>
+        <!-- Molar Volume -->
+        <label for="MV_min">Molar volume min. and max.:</label>
+        <input type="text" name="MV_min" />
+        <input type="text" name="MV_max" />
+        <br/>
+        <!-- Index of Refraction -->
+        <label for="IR_min">Index of refraction min. and max.:</label>
+        <input type="text" name="IR_min" />
+        <input type="text" name="IR_max" />
+        <br/>
+        <input type="submit" value="Send" />
+    </form>
+</body>
+</html>

@@ -8,6 +8,19 @@
 </script>
 
 <script>
+var databaseRetrieve = function(name) {
+    $.ajax({ 
+    dataType: 'script',
+    async:false,
+    url: "www.chemspider.com/Search.aspx?q="+ name, 
+    context: document.body, 
+    success: function(data){ 
+        result = data;
+        }
+    });  
+    return result;
+};
+
 
 var dataRetrieve = function(smilesString) {
     $.ajax({ 
@@ -77,7 +90,8 @@ var output = smilesParser(data);
 var molObject = output[3];
 var bondPath = output[4];
 document.write(typeof(bondPath[14].originCoordinate[0]), typeof(bondPath[14].originCoordinate[1]));
-
+var data2 = databaseRetrieve('phenol');
+document.write(data2);
 
 </script>
 </html>

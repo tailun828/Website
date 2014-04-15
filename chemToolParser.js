@@ -1,9 +1,12 @@
 
-var dataRetrieve = function(smilesString) {
+
+
+
+var dataRetrieve = function(molName) {
     $.ajax({ 
     dataType: 'text',
     async:false,
-    url: "http://cactus.nci.nih.gov/chemical/structure/"+smilesString +"/sdf", 
+    url: "http://cactus.nci.nih.gov/chemical/structure/"+molName +"/sdf", 
     context: document.body, 
     success: function(data){ 
         result = data;
@@ -12,7 +15,7 @@ var dataRetrieve = function(smilesString) {
     return result;
 };
 
-var smilesParser = function(data) {
+var chemResolverParser = function(data) {
 
         var chemFormula = data.substring(0,data.indexOf('APtclcactv'));  // get chem formula by taking substring 0 to wherre APtclc starts
         data = data.split(" ");   // made array of the data
